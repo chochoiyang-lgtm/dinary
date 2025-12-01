@@ -83,139 +83,145 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased h-screen flex flex-col overflow-hidden">
+<body class="font-sans antialiased h-screen flex flex-col overflow-hidden text-base">
 
     <!-- 頂部標題與工具列 -->
-    <header class="flex-none px-6 py-4 bg-muji-bg z-10 flex justify-between items-center border-b border-stone-200/50">
-        <h1 class="text-xl font-medium tracking-wide text-stone-700">生活筆記</h1>
+    <header class="flex-none px-6 py-5 bg-muji-bg z-10 flex justify-between items-center border-b border-stone-200/50">
+        <!-- 放大標題 -->
+        <h1 class="text-2xl font-medium tracking-wide text-stone-700">生活筆記</h1>
         
-        <div class="flex gap-2">
+        <div class="flex gap-3">
             <!-- 排序按鈕 -->
             <button onclick="toggleSort()" class="text-stone-500 hover:text-stone-700 transition-colors p-2 rounded-full active:bg-stone-200" title="切換排序">
-                <i id="sortIcon" class="fa-solid fa-sort-amount-down text-lg"></i>
+                <i id="sortIcon" class="fa-solid fa-sort-amount-down text-xl"></i>
             </button>
             
-            <!-- 選取模式按鈕 -->
-            <button onclick="toggleSelectionMode()" id="selectModeBtn" class="text-stone-500 hover:text-stone-700 transition-colors px-3 py-1 rounded-full border border-stone-300 text-sm active:bg-stone-200">
+            <!-- 選取模式按鈕 (放大字體) -->
+            <button onclick="toggleSelectionMode()" id="selectModeBtn" class="text-stone-500 hover:text-stone-700 transition-colors px-4 py-1.5 rounded-full border border-stone-300 text-base active:bg-stone-200">
                 多選
             </button>
         </div>
     </header>
 
     <!-- 主要內容區 (可滾動) -->
-    <main class="flex-1 overflow-y-auto no-scrollbar pb-32 px-4 pt-4" id="mainContent">
+    <main class="flex-1 overflow-y-auto no-scrollbar pb-36 px-4 pt-5" id="mainContent">
         
         <!-- 輸入區塊 (選取模式時隱藏) -->
-        <section id="inputSection" class="bg-white rounded-2xl p-5 shadow-sm border border-stone-100 mb-6 transition-all duration-300">
-            <div class="flex justify-between items-center mb-3">
-                <span class="text-xs text-stone-400" id="currentTimeDisplay">載入中...</span>
+        <section id="inputSection" class="bg-white rounded-2xl p-6 shadow-sm border border-stone-100 mb-6 transition-all duration-300">
+            <div class="flex justify-between items-center mb-4">
+                <!-- 放大日期顯示 -->
+                <span class="text-sm text-stone-400" id="currentTimeDisplay">載入中...</span>
             </div>
             
-            <textarea id="noteInput" rows="3" placeholder="今天發生了什麼事？..." class="w-full text-base text-stone-700 placeholder-stone-300 bg-transparent border-none focus:ring-0 resize-none p-0 mb-4"></textarea>
+            <!-- 放大輸入框字體 -->
+            <textarea id="noteInput" rows="3" placeholder="今天發生了什麼事？..." class="w-full text-lg text-stone-700 placeholder-stone-300 bg-transparent border-none focus:ring-0 resize-none p-0 mb-5 leading-relaxed"></textarea>
             
             <!-- 類別選擇 -->
-            <div class="flex flex-wrap gap-2 mb-4" id="categorySelector">
+            <div class="flex flex-wrap gap-3 mb-5" id="categorySelector">
                 <!-- 由 JS 生成 -->
             </div>
 
-            <button onclick="addNote()" class="w-full bg-stone-600 text-white py-3 rounded-xl hover:bg-stone-700 active:scale-[0.98] transition-all font-medium shadow-md shadow-stone-200">
+            <!-- 放大按鈕字體與尺寸 -->
+            <button onclick="addNote()" class="w-full bg-stone-600 text-white py-4 rounded-xl hover:bg-stone-700 active:scale-[0.98] transition-all text-lg font-medium shadow-md shadow-stone-200">
                 記錄下來
             </button>
         </section>
 
         <!-- 筆記列表標題 -->
-        <div class="flex justify-between items-end mb-3 px-1">
-            <h2 class="text-lg font-medium text-stone-600" id="currentViewTitle">全部筆記</h2>
-            <span class="text-xs text-stone-400" id="noteCount">0 則</span>
+        <div class="flex justify-between items-end mb-4 px-1">
+            <h2 class="text-xl font-medium text-stone-600" id="currentViewTitle">全部筆記</h2>
+            <span class="text-sm text-stone-400" id="noteCount">0 則</span>
         </div>
 
         <!-- 筆記列表容器 -->
-        <div id="notesContainer" class="space-y-3 pb-20">
+        <div id="notesContainer" class="space-y-4 pb-20">
             <!-- 筆記將顯示於此 -->
         </div>
     </main>
 
     <!-- 底部導航列 (一般模式顯示) -->
-    <nav id="bottomNav" class="flex-none bg-white/90 backdrop-blur-md border-t border-stone-200 pb-safe pt-2 px-2 fixed bottom-0 w-full z-20 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.02)] transition-transform duration-300">
-        <div class="flex justify-around items-center h-16 max-w-md mx-auto">
-            <button onclick="switchTab('all')" class="nav-item active flex flex-col items-center justify-center w-full text-stone-400 transition-all gap-1" data-tab="all">
-                <i class="fa-solid fa-layer-group text-lg py-1 px-3 transition-all"></i>
-                <span class="text-[10px]">全部</span>
+    <nav id="bottomNav" class="flex-none bg-white/95 backdrop-blur-md border-t border-stone-200 pb-safe pt-2 px-2 fixed bottom-0 w-full z-20 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.02)] transition-transform duration-300">
+        <div class="flex justify-around items-center h-20 max-w-md mx-auto">
+            <!-- 放大底部導航圖示與文字 -->
+            <button onclick="switchTab('all')" class="nav-item active flex flex-col items-center justify-center w-full text-stone-400 transition-all gap-1.5" data-tab="all">
+                <i class="fa-solid fa-layer-group text-2xl py-1 px-3 transition-all"></i>
+                <span class="text-xs">全部</span>
             </button>
-            <button onclick="switchTab('個人')" class="nav-item flex flex-col items-center justify-center w-full text-stone-400 transition-all gap-1" data-tab="個人">
-                <i class="fa-regular fa-user text-lg py-1 px-3 transition-all"></i>
-                <span class="text-[10px]">個人</span>
+            <button onclick="switchTab('個人')" class="nav-item flex flex-col items-center justify-center w-full text-stone-400 transition-all gap-1.5" data-tab="個人">
+                <i class="fa-regular fa-user text-2xl py-1 px-3 transition-all"></i>
+                <span class="text-xs">個人</span>
             </button>
-            <button onclick="switchTab('家庭')" class="nav-item flex flex-col items-center justify-center w-full text-stone-400 transition-all gap-1" data-tab="家庭">
-                <i class="fa-solid fa-house-chimney text-lg py-1 px-3 transition-all"></i>
-                <span class="text-[10px]">家庭</span>
+            <button onclick="switchTab('家庭')" class="nav-item flex flex-col items-center justify-center w-full text-stone-400 transition-all gap-1.5" data-tab="家庭">
+                <i class="fa-solid fa-house-chimney text-2xl py-1 px-3 transition-all"></i>
+                <span class="text-xs">家庭</span>
             </button>
-            <button onclick="switchTab('班級')" class="nav-item flex flex-col items-center justify-center w-full text-stone-400 transition-all gap-1" data-tab="班級">
-                <i class="fa-solid fa-school text-lg py-1 px-3 transition-all"></i>
-                <span class="text-[10px]">班級</span>
+            <button onclick="switchTab('班級')" class="nav-item flex flex-col items-center justify-center w-full text-stone-400 transition-all gap-1.5" data-tab="班級">
+                <i class="fa-solid fa-school text-2xl py-1 px-3 transition-all"></i>
+                <span class="text-xs">班級</span>
             </button>
-            <button onclick="switchTab('大吉')" class="nav-item flex flex-col items-center justify-center w-full text-stone-400 transition-all gap-1" data-tab="大吉">
-                <i class="fa-solid fa-star text-lg py-1 px-3 transition-all"></i>
-                <span class="text-[10px]">大吉</span>
+            <button onclick="switchTab('大吉')" class="nav-item flex flex-col items-center justify-center w-full text-stone-400 transition-all gap-1.5" data-tab="大吉">
+                <i class="fa-solid fa-star text-2xl py-1 px-3 transition-all"></i>
+                <span class="text-xs">大吉</span>
             </button>
         </div>
-        <div class="h-4 w-full"></div>
+        <div class="h-6 w-full"></div>
     </nav>
 
     <!-- 底部選取操作列 (選取模式顯示) -->
-    <div id="selectionBar" class="fixed bottom-0 w-full bg-stone-800 text-white z-30 transform translate-y-full transition-transform duration-300 shadow-lg rounded-t-2xl">
-        <div class="flex justify-between items-center px-6 py-4 max-w-md mx-auto h-20">
+    <div id="selectionBar" class="fixed bottom-0 w-full bg-stone-800 text-white z-30 transform translate-y-full transition-transform duration-300 shadow-lg rounded-t-3xl">
+        <div class="flex justify-between items-center px-8 py-6 max-w-md mx-auto h-24">
             <div class="flex items-center gap-2">
-                <span class="text-sm text-stone-300">已選取</span>
-                <span id="selectedCount" class="text-xl font-bold text-white">0</span>
-                <span class="text-sm text-stone-300">則</span>
+                <span class="text-base text-stone-300">已選取</span>
+                <span id="selectedCount" class="text-2xl font-bold text-white">0</span>
+                <span class="text-base text-stone-300">則</span>
             </div>
-            <button onclick="copySelectedNotes()" class="bg-white text-stone-800 px-6 py-2.5 rounded-full font-bold text-sm hover:bg-stone-200 active:scale-95 transition-all flex items-center gap-2 shadow-lg">
-                <i class="fa-regular fa-copy"></i>
+            <button onclick="copySelectedNotes()" class="bg-white text-stone-800 px-8 py-3 rounded-full font-bold text-base hover:bg-stone-200 active:scale-95 transition-all flex items-center gap-2 shadow-lg">
+                <i class="fa-regular fa-copy text-lg"></i>
                 複製內容
             </button>
         </div>
-        <div class="h-4 w-full"></div>
+        <div class="h-6 w-full"></div>
     </div>
 
     <!-- 編輯/修改類別 Modal -->
     <div id="editModal" class="fixed inset-0 bg-stone-800/40 backdrop-blur-sm z-50 hidden flex justify-center items-end sm:items-center transition-opacity opacity-0">
-        <div class="bg-white w-full sm:w-96 sm:rounded-2xl rounded-t-3xl p-6 shadow-2xl transform translate-y-full transition-transform duration-300" id="editModalContent">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-bold text-stone-700">編輯筆記</h3>
-                <button onclick="closeEditModal()" class="text-stone-400 hover:text-stone-600">
-                    <i class="fa-solid fa-xmark text-xl"></i>
+        <div class="bg-white w-full sm:w-[30rem] sm:rounded-2xl rounded-t-3xl p-8 shadow-2xl transform translate-y-full transition-transform duration-300" id="editModalContent">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-stone-700">編輯筆記</h3>
+                <button onclick="closeEditModal()" class="text-stone-400 hover:text-stone-600 p-2">
+                    <i class="fa-solid fa-xmark text-2xl"></i>
                 </button>
             </div>
             
             <input type="hidden" id="editNoteId">
             
-            <div class="mb-4">
-                <label class="block text-xs font-medium text-stone-500 mb-2">修改類別</label>
-                <div class="flex flex-wrap gap-2" id="editCategorySelector">
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-stone-500 mb-3">修改類別</label>
+                <div class="flex flex-wrap gap-3" id="editCategorySelector">
                     <!-- JS 生成 -->
                 </div>
             </div>
 
-            <div class="mb-6">
-                <label class="block text-xs font-medium text-stone-500 mb-2">內容</label>
-                <textarea id="editNoteInput" rows="4" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-3 text-stone-700 focus:outline-none focus:border-stone-400 resize-none"></textarea>
+            <div class="mb-8">
+                <label class="block text-sm font-medium text-stone-500 mb-3">內容</label>
+                <!-- 放大編輯框字體 -->
+                <textarea id="editNoteInput" rows="5" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-4 text-lg text-stone-700 focus:outline-none focus:border-stone-400 resize-none leading-relaxed"></textarea>
             </div>
 
-            <div class="flex gap-3">
-                <button onclick="deleteNoteFromModal()" class="flex-1 bg-red-50 text-red-500 py-3 rounded-xl font-medium hover:bg-red-100 transition-colors">
+            <div class="flex gap-4">
+                <button onclick="deleteNoteFromModal()" class="flex-1 bg-red-50 text-red-500 py-4 rounded-xl font-medium text-lg hover:bg-red-100 transition-colors">
                     刪除
                 </button>
-                <button onclick="saveEdit()" class="flex-[2] bg-stone-700 text-white py-3 rounded-xl font-medium hover:bg-stone-800 transition-colors shadow-lg shadow-stone-200">
+                <button onclick="saveEdit()" class="flex-[2] bg-stone-700 text-white py-4 rounded-xl font-medium text-lg hover:bg-stone-800 transition-colors shadow-lg shadow-stone-200">
                     儲存變更
                 </button>
             </div>
-            <div class="h-6 sm:h-0"></div>
+            <div class="h-8 sm:h-0"></div>
         </div>
     </div>
 
     <!-- Toast Notification -->
-    <div id="toast" class="fixed top-6 left-1/2 transform -translate-x-1/2 bg-stone-800 text-white px-6 py-2 rounded-full shadow-lg opacity-0 transition-opacity duration-300 z-50 text-sm font-medium pointer-events-none whitespace-nowrap">
+    <div id="toast" class="fixed top-8 left-1/2 transform -translate-x-1/2 bg-stone-800 text-white px-8 py-3 rounded-full shadow-lg opacity-0 transition-opacity duration-300 z-50 text-base font-medium pointer-events-none whitespace-nowrap">
         已儲存
     </div>
 
@@ -249,6 +255,7 @@
             document.getElementById('currentTimeDisplay').textContent = now.toLocaleDateString('zh-TW', options);
         }
 
+        // 調整標籤字體大小
         function renderCategorySelectors() {
             const createRadio = (name, containerId) => {
                 const container = document.getElementById(containerId);
@@ -259,7 +266,7 @@
                     const wrapper = document.createElement('div');
                     wrapper.innerHTML = `
                         <input type="radio" name="${name}" id="${id}" value="${cat}" class="hidden peer">
-                        <label for="${id}" class="inline-block px-3 py-1.5 rounded-lg border border-stone-200 text-sm text-stone-500 bg-stone-50 cursor-pointer transition-all hover:bg-stone-100 peer-checked:shadow-sm select-none">
+                        <label for="${id}" class="inline-block px-4 py-2 rounded-lg border border-stone-200 text-base text-stone-500 bg-stone-50 cursor-pointer transition-all hover:bg-stone-100 peer-checked:shadow-sm select-none">
                             ${cat}
                         </label>
                     `;
@@ -294,7 +301,6 @@
             input.value = '';
             if (selectedRadio) selectedRadio.checked = false;
             
-            // 如果在選取模式下新增，暫時退出選取模式比較合理，或者保持。這裡選擇維持原狀但刷新列表
             renderNotes();
             showToast('筆記已儲存');
         }
@@ -313,10 +319,8 @@
                 btn.textContent = '取消';
                 btn.classList.add('bg-stone-200', 'text-stone-800', 'border-stone-400');
                 
-                // 隱藏輸入區，避免干擾
-                inputSection.style.display = 'none'; // 或者使用 classList add hidden
+                inputSection.style.display = 'none';
                 
-                // 底部導航切換
                 bottomNav.classList.add('translate-y-full');
                 selectionBar.classList.remove('translate-y-full');
                 
@@ -343,7 +347,7 @@
             } else {
                 selectedNoteIds.add(id);
             }
-            renderNotes(); // 重新渲染以更新樣式
+            renderNotes();
             updateSelectionCount();
         }
 
@@ -357,20 +361,15 @@
                 return;
             }
 
-            // 抓取選取的筆記並排序
             const selectedNotes = notes.filter(n => selectedNoteIds.has(n.id));
-            
-            // 依據時間排序 (舊到新或新到舊，這裡預設舊到新方便閱讀)
             selectedNotes.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
-            // 格式化文本
             const textToCopy = selectedNotes.map(n => {
                 const date = new Date(n.timestamp);
                 const dateStr = `${date.getMonth() + 1}/${date.getDate()} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
                 return `【${dateStr}】 #${n.category}\n${n.content}`;
             }).join('\n\n------------------\n\n');
 
-            // 執行複製
             const textArea = document.createElement("textarea");
             textArea.value = textToCopy;
             document.body.appendChild(textArea);
@@ -379,7 +378,7 @@
             try {
                 document.execCommand('copy');
                 showToast(`已複製 ${selectedNotes.length} 則筆記`);
-                toggleSelectionMode(); // 複製完自動退出選取模式
+                toggleSelectionMode();
             } catch (err) {
                 console.error('Copy failed', err);
                 showToast('複製失敗，請手動複製');
@@ -411,11 +410,11 @@
 
             if (filteredNotes.length === 0) {
                 container.innerHTML = `
-                    <div class="text-center py-20 flex flex-col items-center justify-center text-stone-300">
-                        <div class="bg-stone-100 p-4 rounded-full mb-3">
-                            <i class="fa-solid fa-seedling text-2xl"></i>
+                    <div class="text-center py-24 flex flex-col items-center justify-center text-stone-300">
+                        <div class="bg-stone-100 p-5 rounded-full mb-4">
+                            <i class="fa-solid fa-seedling text-3xl"></i>
                         </div>
-                        <p class="text-sm">這個分類還沒有筆記</p>
+                        <p class="text-base">這個分類還沒有筆記</p>
                     </div>
                 `;
                 return;
@@ -434,9 +433,8 @@
                 const cardClass = isSelectionMode && isSelected ? 'selected-card' : 'bg-white';
                 
                 const card = document.createElement('div');
-                card.className = `${cardClass} p-4 rounded-xl shadow-sm border border-stone-100 active:scale-[0.99] transition-all duration-200 cursor-pointer group relative flex gap-3 items-start`;
+                card.className = `${cardClass} p-5 rounded-xl shadow-sm border border-stone-100 active:scale-[0.99] transition-all duration-200 cursor-pointer group relative flex gap-4 items-start`;
                 
-                // 點擊事件：選取模式切換選取，普通模式開啟編輯
                 card.onclick = (e) => {
                     if (isSelectionMode) {
                         toggleSelectNote(note.id);
@@ -447,17 +445,17 @@
                     }
                 };
 
-                // 選取模式顯示勾選框，普通模式不顯示
+                // Checkbox 變大
                 let checkboxHtml = '';
                 if (isSelectionMode) {
                     const checkIcon = isSelected 
-                        ? '<i class="fa-solid fa-check text-white text-xs"></i>' 
+                        ? '<i class="fa-solid fa-check text-white text-sm"></i>' 
                         : '';
                     const checkBg = isSelected ? 'bg-stone-600 border-stone-600' : 'bg-white border-stone-300';
                     
                     checkboxHtml = `
                         <div class="flex-none pt-1">
-                            <div class="w-5 h-5 rounded-full border ${checkBg} flex items-center justify-center check-circle">
+                            <div class="w-6 h-6 rounded-full border ${checkBg} flex items-center justify-center check-circle">
                                 ${checkIcon}
                             </div>
                         </div>
@@ -467,17 +465,20 @@
                 card.innerHTML = `
                     ${checkboxHtml}
                     <div class="flex-1 min-w-0">
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="text-[10px] font-medium px-2 py-0.5 rounded-md ${tagColorClass}">
+                        <div class="flex justify-between items-start mb-3">
+                            <!-- 放大標籤字體 -->
+                            <span class="text-sm font-medium px-2.5 py-1 rounded-md ${tagColorClass}">
                                 ${note.category}
                             </span>
-                            <span class="text-xs text-stone-300 font-mono">${dateStr}</span>
+                            <!-- 放大日期字體 -->
+                            <span class="text-sm text-stone-400 font-mono">${dateStr}</span>
                         </div>
-                        <p class="text-stone-700 text-sm whitespace-pre-wrap leading-relaxed break-words">${escapeHtml(note.content)}</p>
+                        <!-- 放大內文字體 -->
+                        <p class="text-stone-700 text-lg whitespace-pre-wrap leading-relaxed break-words">${escapeHtml(note.content)}</p>
                     </div>
                     ${!isSelectionMode ? `
-                    <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <i class="fa-solid fa-pen text-stone-300 text-xs"></i>
+                    <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fa-solid fa-pen text-stone-300 text-base"></i>
                     </div>` : ''}
                 `;
                 container.appendChild(card);
@@ -486,8 +487,6 @@
 
         function switchTab(tabName) {
             currentTab = tabName;
-            
-            // 退出選取模式，避免邏輯混亂
             if(isSelectionMode) toggleSelectionMode();
 
             document.querySelectorAll('.nav-item').forEach(el => {
@@ -507,11 +506,10 @@
         function toggleSort() {
             isDescending = !isDescending;
             const icon = document.getElementById('sortIcon');
-            icon.className = isDescending ? 'fa-solid fa-sort-amount-down text-lg' : 'fa-solid fa-sort-amount-up text-lg';
+            icon.className = isDescending ? 'fa-solid fa-sort-amount-down text-xl' : 'fa-solid fa-sort-amount-up text-xl';
             renderNotes();
         }
 
-        // --- 編輯功能 (保持不變) ---
         function openEditModal(id) {
             const note = notes.find(n => n.id === id);
             if (!note) return;
